@@ -2,26 +2,36 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
+using Application.Contracts;
+using Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-[ExcludeFromCodeCoverage]
+[ExcludeFromCodeCoverage] //To Test this we'll need to figure out how to create a fake http context for AuthenticateAsync
 [Route("login")]
 public sealed class LoginController : Controller
 {
+  private readonly ICurrentUserAccessor _currentUserAccessor;
   private readonly IHttpContextAccessor _httpContextAccessor;
 
-  public LoginController(IHttpContextAccessor httpContextAccessor)
+  public LoginController(IHttpContextAccessor httpContextAccessor, ICurrentUserAccessor currentUserAccessor)
   {
     _httpContextAccessor = httpContextAccessor;
+    _currentUserAccessor = currentUserAccessor;
   }
 
   [HttpGet("callback")]
   public async Task<IActionResult> Callback([FromQuery] string scheme)
   {
+    var httpContext = _httpContextAccessor.HttpContext;
+    if (httpContext == null)
+    {
+      return RedirectToAction("Index", "Home");
+    }
+
     try
     {
-      var authenticateResult = await HttpContext.AuthenticateAsync(scheme);
+      var authenticateResult = await httpContext.AuthenticateAsync(scheme);
       var providerScheme = authenticateResult.Ticket?.Properties.Items["scheme"] ?? "";
       var returnUrl = "";
       authenticateResult.Ticket?.Properties.Items.TryGetValue("returnUrl", out returnUrl);
@@ -29,15 +39,7 @@ public sealed class LoginController : Controller
       var externalClaims = authenticateResult.Principal?.Claims ?? Array.Empty<Claim>();
       var email = getEmail(externalClaims, providerScheme);
 
-      var principal = new ClaimsPrincipal(new ClaimsIdentity(new[] { new Claim(ClaimTypes.Email, email) }));
-      var httpContext = _httpContextAccessor.HttpContext;
-      if (httpContext == null)
-      {
-        return Redirect(returnUrl);
-      }
-
-      await httpContext.SignOutAsync();
-      await httpContext.SignInAsync(principal);
+      await _currentUserAccessor.SetCurrentUser(new User(email));
       return Redirect(returnUrl);
     }
     catch (Exception)

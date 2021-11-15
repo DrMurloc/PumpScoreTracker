@@ -7,15 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreTracker.Web", "ScoreTr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreTracker.Domain", "ScoreTracker.Domain\ScoreTracker.Domain.csproj", "{DAA6843B-2119-4FBE-8105-36D1C8B9E9F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreTracker.Application", "ScoreTracker.Application\ScoreTracker.Application.csproj", "{F142AE91-4FCA-4C51-B6A9-42783E174A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreTracker.Application", "ScoreTracker.Application\ScoreTracker.Application.csproj", "{F142AE91-4FCA-4C51-B6A9-42783E174A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreTracker.Mediation", "ScoreTracker.Mediation\ScoreTracker.Mediation.csproj", "{CB496621-25B3-40F2-8571-CC1D6C97D378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreTracker.Mediation", "ScoreTracker.Mediation\ScoreTracker.Mediation.csproj", "{CB496621-25B3-40F2-8571-CC1D6C97D378}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7CFEC6E4-40F4-4F46-8157-D1BEF37BC9C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4DA16AB3-E730-414C-B1D9-BABB9F358FEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreTracker.UnitTests", "ScoreTracker.UnitTests\ScoreTracker.UnitTests.csproj", "{E61770AE-2793-4BC0-8B6D-8243A291DD1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScoreTracker.UnitTests", "ScoreTracker.UnitTests\ScoreTracker.UnitTests.csproj", "{E61770AE-2793-4BC0-8B6D-8243A291DD1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{99735426-18D4-4A3E-84D3-93C591E84174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScoreTracker.DataAccess", "ScoreTracker.DataAccess\ScoreTracker.DataAccess.csproj", "{235B3FDE-9900-49E9-906B-917942564839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{E61770AE-2793-4BC0-8B6D-8243A291DD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E61770AE-2793-4BC0-8B6D-8243A291DD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E61770AE-2793-4BC0-8B6D-8243A291DD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{235B3FDE-9900-49E9-906B-917942564839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235B3FDE-9900-49E9-906B-917942564839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235B3FDE-9900-49E9-906B-917942564839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235B3FDE-9900-49E9-906B-917942564839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{DAA6843B-2119-4FBE-8105-36D1C8B9E9F3} = {7CFEC6E4-40F4-4F46-8157-D1BEF37BC9C2}
 		{F142AE91-4FCA-4C51-B6A9-42783E174A0B} = {7CFEC6E4-40F4-4F46-8157-D1BEF37BC9C2}
 		{CB496621-25B3-40F2-8571-CC1D6C97D378} = {7CFEC6E4-40F4-4F46-8157-D1BEF37BC9C2}
+		{235B3FDE-9900-49E9-906B-917942564839} = {99735426-18D4-4A3E-84D3-93C591E84174}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC99CDCB-9219-4F81-AA70-510885182136}

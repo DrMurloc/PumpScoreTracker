@@ -1,4 +1,4 @@
-﻿namespace ScoreTracker.Web.Controllers;
+﻿namespace ScoreTracker.Web.Controllers.Api;
 
 using AutoMapper;
 using Dtos;

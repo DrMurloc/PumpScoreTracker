@@ -11,7 +11,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Web.Controllers;
+using Web.Controllers.Api;
 using Web.Dtos;
 using Xunit;
 

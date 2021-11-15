@@ -1,10 +1,14 @@
 using ScoreTracker.CompositionRoot;
 using ScoreTracker.Web.Mapping;
+using ScoreTracker.Web.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddUserSecrets<Program>();
+
 // Add services to the container.
-builder.Services.AddHttpContextAccessor().AddEndpointsApiExplorer().AddSwaggerGen().AddScoreTrackerCore().AddScoreTrackerInfrastructure()
+builder.Services.AddScoreTrackerSecurity
+    (builder.Configuration).AddHttpContextAccessor().AddEndpointsApiExplorer().AddSwaggerGen().AddScoreTrackerCore().AddScoreTrackerInfrastructure()
   .AddAutoMapper(typeof(CoreToPresentationMapperProfile)).AddControllers();
 
 var app = builder.Build();
@@ -24,5 +28,5 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapControllers();
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.Run();

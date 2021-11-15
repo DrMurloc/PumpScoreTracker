@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ScoreTracker.Application\ScoreTracker.Application.csproj" />
     <ProjectReference Include="..\ScoreTracker.DataAccess\ScoreTracker.DataAccess.csproj" />
+    <ProjectReference Include="..\ScoreTracker.Web\ScoreTracker.Web.csproj" />
   </ItemGroup>
 
 </Project>

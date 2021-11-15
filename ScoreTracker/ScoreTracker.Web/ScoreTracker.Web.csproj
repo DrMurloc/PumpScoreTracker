@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ScoreTracker.Application\ScoreTracker.Application.csproj" />
+    <ProjectReference Include="..\ScoreTracker.CompositionRoot\ScoreTracker.CompositionRoot.csproj" />
   </ItemGroup>
 
 </Project>

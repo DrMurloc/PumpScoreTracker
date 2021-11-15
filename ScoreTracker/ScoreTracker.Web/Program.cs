@@ -1,7 +1,10 @@
+using ScoreTracker.CompositionRoot;
+using ScoreTracker.Web.Mapping;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddScoreTrackerCore().AddScoreTrackerInfrastructure().AddAutoMapper(typeof(CoreToPresentationMapperProfile)).AddControllers();
 
 var app = builder.Build();
 
@@ -19,7 +22,5 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-app.MapRazorPages();
 
 app.Run();

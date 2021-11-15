@@ -3,6 +3,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 using Application.Contracts;
+using Domain.Exceptions;
 using Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 
@@ -20,9 +21,13 @@ public sealed class HttpContextCurrentUserAccessor : ICurrentUserAccessor
   {
     get
     {
-      var userPrincipal = _httpContextAccessor.HttpContext?.User ?? new ClaimsPrincipal();
+      var user = _httpContextAccessor.HttpContext?.User;
+      if (user == null)
+      {
+        throw new UserNotLoggedInException();
+      }
 
-      return userPrincipal.Claims.Any() ? new User(userPrincipal.FindFirstValue(ClaimTypes.Email)) : new User("Anonymous");
+      return user.Claims.Any() ? new User(user.FindFirstValue(ClaimTypes.Email)) : new User("Anonymous");
     }
   }
 

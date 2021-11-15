@@ -1,14 +1,14 @@
-﻿namespace ScoreTracker.UnitTests.Application;
+﻿namespace ScoreTracker.UnitTests.Handlers;
 
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application;
+using Application.Contracts;
 using AutoFixture;
 using Core.Models;
 using FakeItEasy;
 using Mediation.Queries;
-using ScoreTracker.Application;
-using ScoreTracker.Application.Contracts;
 using Xunit;
 
 public sealed class GetChartsTests

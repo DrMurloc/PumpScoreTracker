@@ -4,10 +4,12 @@ using ScoreTracker.Web.Mapping;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoreTrackerCore().AddScoreTrackerInfrastructure().AddAutoMapper(typeof(CoreToPresentationMapperProfile)).AddControllers();
+builder.Services.AddHttpContextAccessor().AddEndpointsApiExplorer().AddSwaggerGen().AddScoreTrackerCore().AddScoreTrackerInfrastructure()
+  .AddAutoMapper(typeof(CoreToPresentationMapperProfile)).AddControllers();
 
 var app = builder.Build();
 
+app.UseSwagger().UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -20,7 +22,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.MapControllers();
 app.UseAuthorization();
 
 app.Run();
